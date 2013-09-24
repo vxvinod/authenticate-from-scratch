@@ -1,0 +1,40 @@
+AUTHENTICATE FROM SCRATCH
+learnt from Ryan bates
+
+Complete Scenarios.
+
+Step 1: Create a new rails application
+
+	rails new authenticate-from-scratch
+	
+Step 2:Create a controller named users with 'new' method for registering in to application.
+
+	rails g controller users new
+
+Step 3: Create a model for database user with 3 columns email,password_hash,password_salt
+
+	rails g model user email:string password_hash:string password_salt:string
+	
+Step 4: Migrate the database
+
+	rake db:migrate
+	
+Step 5: write method for new and create in user  controller
+	def new
+	  @user = User.new
+	end
+
+	def create
+	  @user = User.new(params[:user])
+	  if @user.save
+	    redirect_to root_url, :notice => "Signed up!"
+	  else
+	    render "new"
+	  end
+	end
+
+Step6:
+
+
+
+Step 7: generate a new controller session with method new
